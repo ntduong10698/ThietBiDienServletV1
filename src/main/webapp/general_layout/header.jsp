@@ -15,7 +15,7 @@
                 <a class="nav-link" href="quan-ly-san-pham.tiles">Quản lý sản phẩm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="quan-ly-danh-muc.tiles>Quản lý danh mục sản phẩm</a>
+                <a class="nav-link" href="quan-ly-danh-muc.tiles">Quản lý danh mục sản phẩm</a>
             </li>
         </ul>
     </div>
