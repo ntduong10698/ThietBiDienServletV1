@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="resources/js/ajax/model/ajax_model_category.js"></script>
+<script src="resources/js/ajax/pages/ajax_page_quan_ly_danh_muc.js"></script>
 <main>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

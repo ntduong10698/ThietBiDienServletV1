@@ -165,7 +165,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <button id="btn-them" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Thêm sản phẩm</button>
+                    <button id="btn-them" type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Thêm sản phẩm</button>
                 </div>
                 <div class="col-md-2 mt-1">
                     <select class="form-control" id="select-search-danh-muc">

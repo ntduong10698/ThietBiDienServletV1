@@ -61,6 +61,7 @@ $(function () {
     searchSanPham();
     xacNhanXoaSanPham();
     luuSanPham();
+    themSanPham();
 })
 
 function viewDanhSachSanPham() {
@@ -151,7 +152,7 @@ function suaSanPham() {
         dateNgayTao.val(elementProduct.createDate);
         textareaGioiThieu.val(elementProduct.introduction);
         textareaThongSo.val(elementProduct.specification);
-        if(elementProduct.soldOut) checkboxHetHang.prop("checked");
+        checkboxHetHang.prop("checked", elementProduct.soldOut);
         $("#exampleModal").modal("show");
     })
 }
@@ -186,15 +187,36 @@ function luuSanPham() {
         let valHetHang = checkboxHetHang.is(":checked");
         //nếu tất cả chính xác định dạng thì gán lại các thuộc tính cho phần tử cần sửa
         if(checkTen && checkGia && checkDaBan && checkBaoHanh && checkKhuyenMai) {
+            let checkAction = false; // true là sửa, false là thêm
+            if(elementProduct) {
+                checkAction = true;
+            } else {
+                elementProduct = {};
+            }
             elementProduct.name = valTen;
             elementProduct.categoryId = valDanhMuc;
             elementProduct.price = valGia;
-            elementProduct.soldOut = valDaBan;
+            elementProduct.bouth = valDaBan;
             elementProduct.guarantee = valBaoHanh;
             elementProduct.promotion = valKhuyenMai;
             elementProduct.introduction = valGioiThieu;
             elementProduct.specification = valThongSo;
             elementProduct.soldOut = valHetHang;
+            if(checkAction) {
+                // sửa sản phẩm
+                //Sau khi thay đổi các trường xong gọi đến api nếu api trả về truu thì
+                //gán đối tượng api trả về vào listProduct ứng với index của nó lúc đầu.
+                listProduct[indexProduct] = elementProduct;
+                console.log("save");
+                //sau khi save thành công thì phải đóng modal
+            } else {
+                // thêm sản phẩm
+                // gọi api thêm sản phẩm nếu thành công api sẽ trả về một đối tượng
+                //vừa đươc thêm vào đã có id
+                // nếu thành công push đối tượng mới vào mảng listProduct và
+                // thực hiện hiện view lại danh sách.
+                listProduct.push(elementProduct); //elementProduct là đối tượng api trả về
+            }
             //Sau khi thay đổi các trường xong gọi đến api nếu api trả về truu thì
             //gán đối tượng api trả về vào listProduct ứng với index của nó lúc đầu.
             listProduct[indexProduct] = elementProduct;
@@ -205,5 +227,12 @@ function luuSanPham() {
             $("#exampleModal").modal("hide");
         }
 
+    })
+}
+
+function themSanPham() {
+    btnThem.click(function () {
+        elementProduct = null;
+        $("#exampleModal").modal("show");
     })
 }
